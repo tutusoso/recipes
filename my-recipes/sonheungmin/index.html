@@ -467,9 +467,72 @@
 
   <div class="toast" id="toast"></div>
 
+  <div class="modal-overlay" id="secretModal" onclick="if(event.target.id==='secretModal') closeModal()">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-icon">🥚</div>
+      <div class="modal-title">핵심재료는 여기!</div>
+      <p class="modal-desc">
+        버튼 누르면 바로 이동돼요!<br>혹시 안 뜨면 검색창에 <strong>붙여넣기</strong> 해주세요<br>(키워드는 자동으로 복사돼요)
+      </p>
+
+      <div class="modal-keyword-box">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value">손흥민</div>
+      </div>
+
+      <button type="button" class="modal-cta" id="goCoupangBtn">
+        키워드 복사하고 바로가기 →
+      </button>
+      <p class="modal-subtext">쿠팡 파트너스를 통해 수수료를 받습니다.</p>
+    </div>
+  </div>
+
   <script>
+    var COUPANG_URL = 'https://influencers.coupang.com/s/dkanrjsk';
+    var SEARCH_KEYWORD = '손흥민';
+
     function openModal() {
-      window.location.href = 'go/';
+      document.getElementById('secretModal').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal() {
+      document.getElementById('secretModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    document.getElementById('goCoupangBtn').addEventListener('click', function() {
+      var btn = this;
+      copyKeyword(SEARCH_KEYWORD);
+      btn.textContent = '키워드 복사하고 이동 중...';
+      btn.style.opacity = '0.7';
+      btn.style.pointerEvents = 'none';
+      var encoded = encodeURIComponent(SEARCH_KEYWORD);
+      setTimeout(function() {
+        window.location.href = COUPANG_URL + '#:~:text=' + encoded;
+      }, 800);
+    });
+
+    function copyKeyword(keyword) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(keyword).then(function() {
+          showToast('"' + keyword + '" 복사 완료!');
+        }).catch(function() { fallbackCopy(keyword); });
+      } else {
+        fallbackCopy(keyword);
+      }
+    }
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast('"' + text + '" 복사 완료!'); } catch (e) {}
+      document.body.removeChild(ta);
     }
 
     function showToast(msg) {
