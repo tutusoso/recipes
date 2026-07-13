@@ -175,6 +175,36 @@
     font-weight: 700;
   }
 
+  .tip-secret {
+    margin-top: 12px;
+    background: var(--accent-soft);
+    border: 1px solid rgba(204, 154, 63, 0.25);
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.15s;
+  }
+  .tip-secret:active { transform: scale(0.985); }
+  .tip-secret .tip-label {
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .tip-secret-text {
+    font-size: 14px;
+    color: var(--ink2);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .tip-secret-text strong { color: var(--ink); font-weight: 700; }
+  .tip-secret-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 9px 18px;
+    border-radius: 999px;
+  }
+
   .cta-section {
     margin: 24px 16px 0;
     background: var(--ink);
@@ -415,18 +445,25 @@
     </div>
 
     <div class="tip-box">
-      <div class="tip-label">📌 근데 왜 하필 이 재료일까요?</div>
+      <div class="tip-label">📌 바삭하게 성공하는 꿀팁</div>
       <ul class="tip-list">
-        <li>아무거나 넣는 거랑은 결과가 완전히 달라요 — 이유가 있어요</li>
-        <li>미네랄이 풍부해서 감자 속 수분을 훨씬 잘 빼줘요</li>
-        <li>수분이 빠진 만큼 겉은 더 바삭, 속은 쫀득하게 익어요</li>
-        <li>간도 뾰족하지 않고 은은하게 배어서 자꾸 손이 가요 ✨</li>
+        <li>중간에 한 번 뒤집어주면 더 고르게 바삭해져요</li>
+        <li>물기가 남아 있으면 빵빵하게 안 부풀 수 있으니 완전히 제거하는 게 포인트예요 ✨</li>
       </ul>
     </div>
 
+    <div class="tip-box tip-secret" onclick="openModal()">
+      <div class="tip-label">🤔 근데 왜 하필 이 재료냐면요</div>
+      <p class="tip-secret-text">
+        그냥 물에 담그는 거랑은 <strong>결과가 완전히 달라요.</strong><br>
+        겉은 더 바삭, 속은 쫀득해지는<br>겉바속쫀의 진짜 비밀이거든요 🤍
+      </p>
+      <span class="tip-secret-cta">그 이유 확인하기 →</span>
+    </div>
+
     <div class="cta-section">
-      <h2>왜 하필 <span>이 재료</span>여야 하냐면<br>겉바속쫀의 진짜 비밀이거든요 🤍</h2>
-      <button type="button" class="cta-btn" onclick="openModal()">그 이유 확인하기 →</button>
+      <h2>한 번 해보면 <span>이 재료</span> 없이는<br>다시 못 만들어요 🤍</h2>
+      <button type="button" class="cta-btn" onclick="openModal()">핵심재료 확인하기</button>
     </div>
 
     <div class="share-section">
