@@ -141,11 +141,12 @@
 
   <script>
     var COUPANG_URL = 'https://influencers.coupang.com/s/dkanrjsk';
-    var SEARCH_KEYWORD = '462';
+    var SEARCH_KEYWORD = '강남';
+    var COPY_KEYWORD = '462';
 
     document.getElementById('goCoupangBtn').addEventListener('click', function() {
       var btn = this;
-      copyKeyword(SEARCH_KEYWORD);
+      copyKeyword(COPY_KEYWORD);
       btn.textContent = '키워드 복사하고 이동 중...';
       btn.style.opacity = '0.7';
       btn.style.pointerEvents = 'none';
