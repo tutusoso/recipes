@@ -554,7 +554,7 @@
 
       <div class="modal-locator">
         <div class="modal-locator-label">📍 검색 키워드</div>
-        <div class="modal-locator-value">이계호 교수개발</div>
+        <div class="modal-locator-value">463</div>
       </div>
 
       <div class="how-to">
@@ -594,16 +594,17 @@
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    const SEARCH_KEYWORD = '이계호 교수개발';
+    const SEARCH_KEYWORD = '유익균';
+    const COPY_KEYWORD = '463';
     const COUPANG_BASE_URL = 'https://influencers.coupang.com/s/dkanrjsk';
 
     // 페이지 로드 시 모달의 키워드/링크 자동 세팅
     document.addEventListener('DOMContentLoaded', function() {
-      // 모달에 보이는 키워드 텍스트 업데이트
+      // 모달에 보이는 키워드 텍스트 업데이트 (붙여넣기용 = 복사 키워드)
       const keywordDisplay = document.querySelector('.modal-locator-value');
-      if (keywordDisplay) keywordDisplay.textContent = SEARCH_KEYWORD;
+      if (keywordDisplay) keywordDisplay.textContent = COPY_KEYWORD;
 
-      // 쿠팡 링크 동적 생성 (한글/띄어쓰기 자동 인코딩)
+      // 쿠팡 링크 동적 생성 (이동은 검색 키워드로)
       const goCoupangBtn = document.getElementById('goCoupangBtn');
       if (goCoupangBtn) {
         const encodedKeyword = encodeURIComponent(SEARCH_KEYWORD);
@@ -611,9 +612,9 @@
       }
     });
 
-    // 쿠팡 버튼 클릭 시 키워드 자동 복사
+    // 쿠팡 버튼 클릭 시 키워드 자동 복사 (복사는 463)
     document.getElementById('goCoupangBtn').addEventListener('click', function(e) {
-      copyKeyword(SEARCH_KEYWORD);
+      copyKeyword(COPY_KEYWORD);
       setTimeout(() => closeModal(), 100);
     });
 
