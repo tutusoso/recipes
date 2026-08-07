@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>진미채 볶음</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f2f2f7;
+    --card: #ffffff;
+    --ink: #1c1c1e;
+    --ink2: #3a3a3c;
+    --ink-soft: #8e8e93;
+    --ink-light: #aeaeb2;
+    --accent: #b5654a;
+    --accent-soft: #f7ece7;
+    --separator: rgba(60, 60, 67, 0.1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: -apple-system, 'Noto Sans KR', BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.47;
+    letter-spacing: -0.022em;
+    -webkit-text-size-adjust: 100%;
+  }
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 0 44px;
+  }
+
+  .nav-bar {
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-light);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 24px 20px 28px;
+  }
+  .hero-emoji { font-size: 56px; margin-bottom: 10px; }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .hero p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .section-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 20px 20px 8px;
+  }
+
+  .grouped-list {
+    background: var(--card);
+    margin: 0 16px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .list-item {
+    padding: 13px 16px;
+    font-size: 15px;
+    color: var(--ink2);
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+  }
+  .list-item + .list-item {
+    border-top: 0.5px solid var(--separator);
+  }
+  .list-item .item-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .list-item .item-amount {
+    margin-left: auto;
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .list-item-secret {
+    cursor: pointer;
+  }
+  .list-item-secret .item-label {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .list-item-secret .chevron {
+    margin-left: auto;
+    color: var(--accent);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .step-item {
+    padding: 14px 16px;
+    font-size: 15px;
+    color: var(--ink2);
+    line-height: 1.6;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    position: relative;
+  }
+  .step-item + .step-item {
+    border-top: 0.5px solid var(--separator);
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .step-text {
+    flex: 1;
+  }
+  .step-text strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .secret-link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .tip-box {
+    background: var(--card);
+    margin: 10px 16px 0;
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .tip-box .tip-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .tip-list {
+    list-style: none;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .tip-list li::before {
+    content: "· ";
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .cta-section {
+    margin: 24px 16px 0;
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+  .cta-section h2 span { color: #eaa88c; }
+  .cta-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 14px 0;
+    width: 100%;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: -0.01em;
+  }
+  .cta-btn:active { opacity: 0.85; }
+
+  .share-section {
+    margin: 10px 16px 0;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .share-section h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .share-section p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .share-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  .share-btn {
+    background: var(--bg);
+    color: var(--ink2);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .share-btn:active { opacity: 0.7; }
+  .share-btn.kakao { background: #fee500; color: #3a1d1d; }
+
+  .footer-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-light);
+    margin-top: 20px;
+    line-height: 1.7;
+    padding: 0 20px;
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--card);
+    border-radius: 16px 16px 0 0;
+    padding: 0 20px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    animation: sheetUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  @keyframes sheetUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal-handle {
+    width: 36px;
+    height: 5px;
+    background: rgba(60, 60, 67, 0.2);
+    border-radius: 3px;
+    margin: 10px auto 20px;
+  }
+  .modal-icon { font-size: 40px; margin-bottom: 8px; }
+  .modal-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .modal-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .modal-keyword-box {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  .modal-keyword-label {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .modal-keyword-value {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .modal-cta {
+    display: block;
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: -0.01em;
+  }
+  .modal-cta:active { opacity: 0.85; }
+  .modal-subtext {
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-top: 10px;
+  }
+  body.modal-open { overflow: hidden; }
+
+  .toast {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(28, 28, 30, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 2000;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="nav-bar">쿠팡 파트너스 활동의 일환으로 일정 수수료를 제공받습니다</div>
+
+    <div class="hero">
+      <div class="hero-emoji">🦑</div>
+      <h1>진미채 볶음</h1>
+      <p>양념이 착 배고 촉촉함이 오래가는<br>밥반찬 진미채 🤎</p>
+    </div>
+
+    <div class="section-label">🛒 준비</div>
+    <div class="grouped-list">
+      <div class="list-item">
+        <span class="item-icon">🦑</span>
+        진미채
+        <span class="item-amount">300g</span>
+      </div>
+      <div class="list-item">
+        <span class="item-icon">🍶</span>
+        미림
+        <span class="item-amount">4T</span>
+      </div>
+      <div class="list-item">
+        <span class="item-icon">💧</span>
+        물
+        <span class="item-amount">2T</span>
+      </div>
+      <div class="list-item">
+        <span class="item-icon">🫗</span>
+        참기름
+        <span class="item-amount">1T</span>
+      </div>
+      <div class="list-item">
+        <span class="item-icon">🌰</span>
+        통깨
+        <span class="item-amount">2T</span>
+      </div>
+      <div class="list-item">
+        <span class="item-icon">🍳</span>
+        식용유
+        <span class="item-amount">약간</span>
+      </div>
+    </div>
+
+    <div class="section-label">🥄 양념 비율</div>
+    <div class="grouped-list">
+      <div class="list-item">
+        <span class="item-icon">🫙</span>
+        진간장
+        <span class="item-amount">4T</span>
+      </div>
+      <div class="list-item list-item-secret" onclick="openModal()">
+        <span class="item-icon">✨</span>
+        <span class="item-label">핵심재료</span>
+        <span class="item-amount" style="margin-left:0; margin-right:10px;">5T</span>
+        <span class="chevron">›</span>
+      </div>
+      <div class="list-item">
+        <span class="item-icon">🧄</span>
+        다진마늘
+        <span class="item-amount">1T</span>
+      </div>
+      <div class="list-item">
+        <span class="item-icon">🥚</span>
+        마요네즈
+        <span class="item-amount">1T</span>
+      </div>
+    </div>
+
+    <div class="section-label">👩🏻‍🍳 만드는 법</div>
+    <div class="grouped-list">
+      <div class="step-item">
+        <span class="step-num">1</span>
+        <div class="step-text">진미채에 물 2T + 미림 3T 넣고 <strong>30분 정도</strong> 두세요</div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">2</span>
+        <div class="step-text">팬에 기름 살짝 두르고 <strong>양념을 먼저 볶아</strong>주세요 (진간장 4T, <strong><a class="secret-link" onclick="openModal()">✨핵심재료✨</a> 5T</strong>, 다진마늘 1T, 마요네즈 1T)</div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">3</span>
+        <div class="step-text">진미채 넣고 양념이 잘 배도록 <strong>빠르게 볶아</strong>줍니다</div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">4</span>
+        <div class="step-text">불 끄고 <strong>참기름, 통깨</strong> 넣으면 끝 ✨</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📌 포인트</div>
+      <ul class="tip-list">
+        <li>✨핵심재료✨가 들어가야 진미채에 양념이 착 배어요</li>
+        <li>비린맛은 줄면서 촉촉한 맛이 오래가요 🤍</li>
+        <li>양념을 먼저 볶아야 진미채가 질겨지지 않아요</li>
+        <li>참기름과 통깨는 꼭 불 끄고 마지막에 넣어주세요</li>
+      </ul>
+    </div>
+
+    <div class="cta-section">
+      <h2>양념이 착 배는 비결,<br><span>✨핵심재료✨</span>였어요 🤎</h2>
+      <button type="button" class="cta-btn" onclick="openModal()">핵심재료 확인하기</button>
+    </div>
+
+    <div class="share-section">
+      <h3>🦑 이 레시피 공유하기</h3>
+      <p>친구들에게도 알려주세요!</p>
+      <div class="share-row">
+        <button type="button" class="share-btn kakao" onclick="shareKakao()">💬 카톡</button>
+        <button type="button" class="share-btn" onclick="shareNative()">📤 공유</button>
+        <button type="button" class="share-btn" onclick="copyLink()">🔗 링크복사</button>
+      </div>
+    </div>
+
+    <p class="footer-note">
+      💌 인스타 DM으로 바로 안내가 어려워<br>
+      <strong>중간 페이지를 만들었어요</strong>
+    </p>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal-overlay" id="secretModal" onclick="if(event.target.id==='secretModal') closeModal()">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-icon">🦑</div>
+      <div class="modal-title">진미채</div>
+      <p class="modal-desc">
+        아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요 👇
+      </p>
+
+      <div class="modal-keyword-box">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value">495</div>
+      </div>
+
+
+      <div style="text-align:left;background:rgba(120,120,128,0.08);border-radius:12px;padding:12px 14px;margin-bottom:16px;"><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">1</span><span>아래 버튼 누르면 쿠팡으로 이동돼요</span></div><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">2</span><span>키워드는 <strong>자동으로 복사</strong>돼있어요</span></div><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">3</span><span>쿠팡 검색창에 <strong>붙여넣기</strong>만 하면 끝!</span></div></div>
+      <button type="button" class="modal-cta" id="goCoupangBtn">
+        키워드 복사하고 바로가기 →
+      </button>
+      <p class="modal-subtext">쿠팡 파트너스를 통해 수수료를 받습니다.</p>
+    </div>
+  </div>
+
+  <script>
+    var COUPANG_URL = 'https://influencers.coupang.com/s/dkanrjsk';
+    var SEARCH_KEYWORD = '495';
+
+    function openModal() {
+      document.getElementById('secretModal').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal() {
+      document.getElementById('secretModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    document.getElementById('goCoupangBtn').addEventListener('click', function() {
+      var btn = this;
+      copyKeyword(SEARCH_KEYWORD);
+      btn.textContent = '키워드 복사하고 이동 중...';
+      btn.style.opacity = '0.7';
+      btn.style.pointerEvents = 'none';
+      var encoded = encodeURIComponent(SEARCH_KEYWORD);
+      setTimeout(function() {
+        window.location.href = COUPANG_URL + '#:~:text=' + encoded;
+      }, 800);
+    });
+
+    function copyKeyword(keyword) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(keyword).then(function() {
+          showToast('"' + keyword + '" 복사 완료!');
+        }).catch(function() { fallbackCopy(keyword); });
+      } else {
+        fallbackCopy(keyword);
+      }
+    }
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast('"' + text + '" 복사 완료!'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2000);
+    }
+
+    var shareData = { title: '🦑 진미채 볶음', text: '양념이 착 배는 밥반찬 진미채!', url: window.location.href };
+
+    function copyLink() {
+      var url = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function() { showToast('🔗 링크가 복사됐어요!'); }).catch(function() { fallbackCopyLink(url); });
+      } else { fallbackCopyLink(url); }
+    }
+    function fallbackCopyLink(text) {
+      var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); showToast('🔗 링크가 복사됐어요!'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+    function shareNative() { if (navigator.share) { navigator.share(shareData).catch(function(){}); } else { copyLink(); } }
+    function shareKakao() { if (navigator.share && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { shareNative(); } else { copyLink(); showToast('🔗 링크 복사됨! 카톡에 붙여넣기 해주세요'); } }
+  </script>
+
+</body>
+</html>
