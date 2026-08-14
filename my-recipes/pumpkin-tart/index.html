@@ -212,6 +212,47 @@
   }
   .cta-btn:active { opacity: 0.85; }
 
+  .kit-section {
+    margin: 10px 16px 0;
+    background: var(--accent-soft);
+    border: 1px solid rgba(224, 139, 47, 0.25);
+    border-radius: 14px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .kit-section .kit-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+  .kit-section h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .kit-section p {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .kit-btn {
+    background: #fff;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    padding: 13px 0;
+    width: 100%;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: -0.01em;
+  }
+  .kit-btn:active { opacity: 0.85; }
+
   .share-section {
     margin: 10px 16px 0;
     background: var(--card);
@@ -435,7 +476,14 @@
 
     <div class="cta-section">
       <h2>포슬포슬 달달한 비결,<br><span>⭐핵심재료⭐</span>였어요 🎃</h2>
-      <button type="button" class="cta-btn" onclick="openModal()">핵심재료 확인하기</button>
+      <button type="button" class="cta-btn" onclick="openModal('secretModal')">핵심재료 확인하기</button>
+    </div>
+
+    <div class="kit-section">
+      <div class="kit-label">🎁 만들기 번거로우시다면</div>
+      <h3>단호박타르트 완제품 세트</h3>
+      <p>재료 준비 없이 바로 즐길 수 있어요 🤎</p>
+      <button type="button" class="kit-btn" onclick="openModal('kitModal')">완제품 세트 보러가기</button>
     </div>
 
     <div class="share-section">
@@ -457,7 +505,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <div class="modal-overlay" id="secretModal" onclick="if(event.target.id==='secretModal') closeModal()">
+  <div class="modal-overlay" id="secretModal" onclick="if(event.target.id==='secretModal') closeModal('secretModal')">
     <div class="modal">
       <div class="modal-handle"></div>
       <div class="modal-icon">🎃</div>
@@ -480,31 +528,64 @@
     </div>
   </div>
 
+  <div class="modal-overlay" id="kitModal" onclick="if(event.target.id==='kitModal') closeModal('kitModal')">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-icon">🎁</div>
+      <div class="modal-title">단호박타르트 완제품 세트</div>
+      <p class="modal-desc">
+        아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요 👇
+      </p>
+
+      <div class="modal-keyword-box">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value" style="font-size:20px;">499. 단호박 타르트 키트</div>
+      </div>
+
+
+      <div style="text-align:left;background:rgba(120,120,128,0.08);border-radius:12px;padding:12px 14px;margin-bottom:16px;"><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">1</span><span>아래 버튼 누르면 쿠팡으로 이동돼요</span></div><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">2</span><span>키워드는 <strong>자동으로 복사</strong>돼있어요</span></div><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">3</span><span>쿠팡 검색창에 <strong>붙여넣기</strong>만 하면 끝!</span></div></div>
+      <button type="button" class="modal-cta" id="goKitBtn">
+        키워드 복사하고 바로가기 →
+      </button>
+      <p class="modal-subtext">쿠팡 파트너스를 통해 수수료를 받습니다.</p>
+    </div>
+  </div>
+
   <script>
     var COUPANG_URL = 'https://influencers.coupang.com/s/dkanrjsk';
     var SEARCH_KEYWORD = '499';
+    var KIT_KEYWORD = '499. 단호박 타르트 키트';
 
-    function openModal() {
-      document.getElementById('secretModal').classList.add('active');
+    function openModal(id) {
+      document.getElementById(id || 'secretModal').classList.add('active');
       document.body.classList.add('modal-open');
     }
-    function closeModal() {
-      document.getElementById('secretModal').classList.remove('active');
+    function closeModal(id) {
+      document.getElementById(id || 'secretModal').classList.remove('active');
       document.body.classList.remove('modal-open');
     }
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+    function closeAllModals() {
+      document.getElementById('secretModal').classList.remove('active');
+      document.getElementById('kitModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAllModals(); });
 
-    document.getElementById('goCoupangBtn').addEventListener('click', function() {
-      var btn = this;
-      copyKeyword(SEARCH_KEYWORD);
-      btn.textContent = '키워드 복사하고 이동 중...';
-      btn.style.opacity = '0.7';
-      btn.style.pointerEvents = 'none';
-      var encoded = encodeURIComponent(SEARCH_KEYWORD);
-      setTimeout(function() {
-        window.location.href = COUPANG_URL + '#:~:text=' + encoded;
-      }, 800);
-    });
+    function wireCoupangButton(btnId, keyword) {
+      document.getElementById(btnId).addEventListener('click', function() {
+        var btn = this;
+        copyKeyword(keyword);
+        btn.textContent = '키워드 복사하고 이동 중...';
+        btn.style.opacity = '0.7';
+        btn.style.pointerEvents = 'none';
+        var encoded = encodeURIComponent(keyword);
+        setTimeout(function() {
+          window.location.href = COUPANG_URL + '#:~:text=' + encoded;
+        }, 800);
+      });
+    }
+    wireCoupangButton('goCoupangBtn', SEARCH_KEYWORD);
+    wireCoupangButton('goKitBtn', KIT_KEYWORD);
 
     function copyKeyword(keyword) {
       if (navigator.clipboard) {
