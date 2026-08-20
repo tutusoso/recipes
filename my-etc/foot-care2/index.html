@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>초간단 풋케어 방법</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🫧</text></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#FFF8F0;font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+a{color:#2F6BFF;text-decoration:none}
+a:hover{color:#1F55DD}
+[data-item]{transition:border-color .15s,transform .15s}
+[data-item].on{border-color:#2F6BFF!important}
+[data-item]:active{transform:scale(.985)}
+[data-open]{cursor:pointer}
+[data-open]:active{transform:scale(.97)}
+.sheet-wrap{display:none;position:fixed;inset:0;z-index:1000;background:rgba(27,29,38,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:flex-end;justify-content:center}
+.sheet-wrap.on{display:flex}
+.sheet{width:100%;max-width:480px;background:#FFF8F0;border-radius:26px 26px 0 0;padding:0 22px 34px;text-align:center;animation:up .34s cubic-bezier(.32,.72,0,1)}
+@keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
+body.locked{overflow:hidden}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(14px);background:rgba(27,29,38,.92);color:#fff;padding:13px 22px;border-radius:13px;font:700 13.5px/1 Pretendard,sans-serif;opacity:0;transition:opacity .28s,transform .28s;z-index:2000;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div style="max-width:480px;margin:0 auto;min-height:100vh;background:#FFF8F0;padding:20px 0 0">
+  <div style="padding:0 22px;font:600 12.5px/1.5 Pretendard,sans-serif;color:#6B5140">쿠팡 파트너스 활동으로 일정 수수료를 받습니다</div>
+  <div style="margin:16px 18px 0;padding:26px 22px 24px;background:linear-gradient(160deg,#EAF1FF,#F6EBFF);border-radius:26px">
+    <div style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;background:#fff;border-radius:100px;font:600 12px/1 Pretendard,sans-serif;color:#2F6BFF">🛁 15분 홈케어 루틴</div>
+    <h1 style="margin:16px 0 10px;font:800 32px/1.28 Pretendard,sans-serif;color:#1B1D26;letter-spacing:-.035em">집에 있는 것들로<br>매끈한 발 만들기 🤍</h1>
+    <p style="margin:0;font:500 15px/1.65 Pretendard,sans-serif;color:rgba(27,29,38,.6)">식초 · 구강청결제 · 베이킹소다로 끝나는 족욕 루틴</p>
+    <div style="margin-top:18px;display:flex;gap:7px;flex-wrap:wrap">
+      <span style="padding:8px 12px;background:rgba(255,255,255,.75);border-radius:10px;font:600 12px/1 Pretendard,sans-serif;color:#4A4E5C">⏱ 15분</span>
+      <span style="padding:8px 12px;background:rgba(255,255,255,.75);border-radius:10px;font:600 12px/1 Pretendard,sans-serif;color:#4A4E5C">🛒 준비물 5개</span>
+      <span style="padding:8px 12px;background:rgba(255,255,255,.75);border-radius:10px;font:600 12px/1 Pretendard,sans-serif;color:#4A4E5C">🫧 초간단</span>
+    </div>
+  </div>
+
+  <div style="padding:30px 22px 0;display:flex;align-items:baseline;justify-content:space-between">
+    <h2 style="margin:0;font:800 19px/1 Pretendard,sans-serif;color:#1B1D26;letter-spacing:-.03em">🛒 준비물</h2>
+    <span style="font:600 12.5px/1 Pretendard,sans-serif;color:#2F6BFF"><span id="cnt">0</span>/5 준비됨</span>
+  </div>
+  <div style="padding:14px 22px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div data-item="0" style="padding:16px 14px;background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(80,50,20,.06);cursor:pointer;border:2px solid transparent">
+      <div style="font-size:26px;line-height:1">💧</div>
+      <div style="margin-top:10px;font:700 14.5px/1.3 Pretendard,sans-serif;color:#1B1D26">미지근한 물</div>
+      <div style="margin-top:3px;font:500 12.5px/1.4 Pretendard,sans-serif;color:rgba(27,29,38,.45)">발이 잠길 만큼</div>
+    </div>
+    <div data-item="1" style="padding:16px 14px;background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(80,50,20,.06);cursor:pointer;border:2px solid transparent">
+      <div style="font-size:26px;line-height:1">🫙</div>
+      <div style="margin-top:10px;font:700 14.5px/1.3 Pretendard,sans-serif;color:#1B1D26">식초</div>
+      <div style="margin-top:3px;font:500 12.5px/1.4 Pretendard,sans-serif;color:rgba(27,29,38,.45)">1/2컵</div>
+    </div>
+    <div data-item="3" style="padding:16px 14px;background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(80,50,20,.06);cursor:pointer;border:2px solid transparent">
+      <div style="font-size:26px;line-height:1">🥄</div>
+      <div style="margin-top:10px;font:700 14.5px/1.3 Pretendard,sans-serif;color:#1B1D26">베이킹소다</div>
+      <div style="margin-top:3px;font:500 12.5px/1.4 Pretendard,sans-serif;color:rgba(27,29,38,.45)">1큰술</div>
+    </div>
+    <div data-item="2" style="padding:16px 14px;background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(80,50,20,.06);cursor:pointer;border:2px solid transparent">
+      <div style="font-size:26px;line-height:1">🪥</div>
+      <div style="margin-top:10px;font:700 14.5px/1.3 Pretendard,sans-serif;color:#1B1D26">구강청결제</div>
+      <div style="margin-top:3px;font:500 12.5px/1.4 Pretendard,sans-serif;color:rgba(27,29,38,.45)">1/2컵</div>
+      <a data-open="mouthwash" style="margin-top:9px;display:inline-flex;align-items:center;gap:4px;padding:6px 10px;background:#EAF1FF;border-radius:8px;font:700 11.5px/1 Pretendard,sans-serif;color:#2F6BFF">최저가 보기 →</a>
+    </div>
+    <div data-item="4" style="grid-column:1 / -1;display:flex;align-items:center;gap:14px;padding:16px 14px;background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(80,50,20,.06);cursor:pointer;border:2px solid transparent">
+      <div style="font-size:26px;line-height:1">🧴</div>
+      <div style="flex:1">
+        <div style="font:700 14.5px/1.3 Pretendard,sans-serif;color:#1B1D26">풋크림 <span style="color:rgba(27,29,38,.4);font-weight:500">듬뿍</span></div>
+        <div style="margin-top:3px;font:500 12.5px/1.4 Pretendard,sans-serif;color:rgba(27,29,38,.45)">강남 원장쌤 추천 뒤꿈치 전용</div>
+      </div>
+      <a data-open="cream" style="padding:9px 12px;background:#EAF1FF;border-radius:9px;font:700 11.5px/1 Pretendard,sans-serif;color:#2F6BFF">추천템 →</a>
+    </div>
+  </div>
+
+  <h2 style="margin:32px 0 0;padding:0 22px;font:800 19px/1 Pretendard,sans-serif;color:#1B1D26;letter-spacing:-.03em">🫧 이렇게 하세요</h2>
+  <div style="padding:14px 22px 0;display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;gap:14px;padding:18px 16px;background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(80,50,20,.06)">
+      <div style="width:28px;height:28px;flex:none;border-radius:50%;background:#2F6BFF;color:#fff;display:flex;align-items:center;justify-content:center;font:700 13px/1 Pretendard,sans-serif">1</div>
+      <p style="margin:0;font:500 15px/1.7 Pretendard,sans-serif;color:rgba(27,29,38,.78);text-wrap:pretty">대야에 <b style="color:#1B1D26">발이 푹 잠길 만큼</b> 미지근한 물을 받아주세요</p>
+    </div>
+    <div style="display:flex;gap:14px;padding:18px 16px;background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(80,50,20,.06)">
+      <div style="width:28px;height:28px;flex:none;border-radius:50%;background:#2F6BFF;color:#fff;display:flex;align-items:center;justify-content:center;font:700 13px/1 Pretendard,sans-serif">2</div>
+      <p style="margin:0;font:500 15px/1.7 Pretendard,sans-serif;color:rgba(27,29,38,.78);text-wrap:pretty">식초 · <a data-open="mouthwash" style="font-weight:700;border-bottom:1.5px solid rgba(47,107,255,.35)">구강청결제</a> · 베이킹소다를 넣고 살살 섞어주세요. 거품은 <b style="color:#1B1D26">자연스러운 반응</b>이에요 ✨</p>
+    </div>
+    <div style="display:flex;gap:14px;padding:18px 16px;background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(80,50,20,.06)">
+      <div style="width:28px;height:28px;flex:none;border-radius:50%;background:#2F6BFF;color:#fff;display:flex;align-items:center;justify-content:center;font:700 13px/1 Pretendard,sans-serif">3</div>
+      <p style="margin:0;font:500 15px/1.7 Pretendard,sans-serif;color:rgba(27,29,38,.78);text-wrap:pretty">발을 <b style="color:#1B1D26">15분</b> 담근 뒤 헹구고 물기를 꼼꼼히 닦아주세요</p>
+    </div>
+    <div style="display:flex;gap:14px;padding:18px 16px;background:#fff;border-radius:18px;box-shadow:0 2px 10px rgba(80,50,20,.06)">
+      <div style="width:28px;height:28px;flex:none;border-radius:50%;background:#2F6BFF;color:#fff;display:flex;align-items:center;justify-content:center;font:700 13px/1 Pretendard,sans-serif">4</div>
+      <p style="margin:0;font:500 15px/1.7 Pretendard,sans-serif;color:rgba(27,29,38,.78);text-wrap:pretty">마지막으로 <a data-open="cream" style="font-weight:700;border-bottom:1.5px solid rgba(47,107,255,.35)">풋크림</a> 듬뿍 발라주면 끝 🤍</p>
+    </div>
+  </div>
+
+  <div style="margin:26px 18px 0;padding:22px;background:#FFF1D6;border-radius:22px">
+    <h2 style="margin:0 0 12px;font:800 15px/1 Pretendard,sans-serif;color:#7A5314;letter-spacing:-.02em">📌 포인트</h2>
+    <div style="display:flex;flex-direction:column;gap:9px">
+      <p style="margin:0;font:500 14px/1.65 Pretendard,sans-serif;color:#6B4B15">족욕 후엔 피부가 건조해져요 — <b>보습까지 꼭</b> 🧴</p>
+      <p style="margin:0;font:500 14px/1.65 Pretendard,sans-serif;color:#6B4B15">물기를 꼼꼼히 닦아야 크림이 잘 흡수돼요</p>
+      <p style="margin:0;font:500 14px/1.65 Pretendard,sans-serif;color:#6B4B15">주 1~2회가 적당해요</p>
+    </div>
+  </div>
+
+  <div style="padding:26px 22px 0;display:flex;gap:8px">
+    <div id="kakaoBtn" style="flex:1;padding:14px 0;text-align:center;background:#FEE500;border-radius:12px;font:700 13px/1 Pretendard,sans-serif;color:#3A1D1D;cursor:pointer;box-shadow:0 2px 8px rgba(80,50,20,.06)">💬 카톡</div>
+    <div id="copyBtn" style="flex:1;padding:14px 0;text-align:center;background:#fff;border-radius:12px;font:700 13px/1 Pretendard,sans-serif;color:#1B1D26;cursor:pointer;box-shadow:0 2px 8px rgba(80,50,20,.06)">🔗 링크복사</div>
+    <div id="shareBtn" style="flex:1;padding:14px 0;text-align:center;background:#fff;border-radius:12px;font:700 13px/1 Pretendard,sans-serif;color:#1B1D26;cursor:pointer;box-shadow:0 2px 8px rgba(80,50,20,.06)">📤 공유하기</div>
+  </div>
+
+  <div style="position:sticky;bottom:0;margin-top:24px;padding:16px 18px 22px;background:linear-gradient(rgba(255,248,240,0),#FFF8F0 40%)">
+    <div style="display:flex;gap:8px">
+      <a data-open="mouthwash" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:17px 0;background:#2F6BFF;border-radius:16px;font:700 14.5px/1 Pretendard,sans-serif;color:#fff;box-shadow:0 8px 20px rgba(47,107,255,.3)">🪥 구강청결제 최저가</a>
+      <a data-open="cream" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:17px 0;background:#fff;border:2px solid #2F6BFF;border-radius:16px;font:700 14.5px/1 Pretendard,sans-serif;color:#2F6BFF">🧴 풋크림</a>
+    </div>
+    <p style="margin:9px 0 0;text-align:center;font:600 12px/1.4 Pretendard,sans-serif;color:#6B5140">쿠팡 파트너스를 통해 수수료를 받습니다</p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="sheet-wrap" id="mouthwashSheet" data-close="mouthwash">
+  <div class="sheet">
+    <div style="width:40px;height:5px;background:rgba(27,29,38,.16);border-radius:3px;margin:12px auto 20px"></div>
+    <div style="font-size:42px;line-height:1;margin-bottom:10px">🪥</div>
+    <h3 style="margin:0 0 8px;font:800 21px/1.3 Pretendard,sans-serif;color:#1B1D26;letter-spacing:-.03em">구강청결제 최저가</h3>
+    <p style="margin:0 0 18px;font:500 14px/1.6 Pretendard,sans-serif;color:rgba(27,29,38,.55)">아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요 👇</p>
+    <div style="padding:16px;background:#fff;border:2px dashed #C9DBFF;border-radius:16px;margin-bottom:16px">
+      <div style="font:800 11px/1 Pretendard,sans-serif;color:#2F6BFF;letter-spacing:.05em;margin-bottom:7px">🔍 검색 키워드</div>
+      <div style="font:800 20px/1.3 Pretendard,sans-serif;color:#1B1D26">509. 구강청결제</div>
+    </div>
+    <div style="text-align:left;background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:10px;padding:5px 0;font:500 13.5px/1.5 Pretendard,sans-serif;color:#4A4E5C"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#2F6BFF;color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px/1 Pretendard,sans-serif">1</span><span>아래 버튼 누르면 쿠팡으로 이동돼요</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:5px 0;font:500 13.5px/1.5 Pretendard,sans-serif;color:#4A4E5C"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#2F6BFF;color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px/1 Pretendard,sans-serif">2</span><span>키워드는 <b style="color:#1B1D26">자동으로 복사</b>돼있어요</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:5px 0;font:500 13.5px/1.5 Pretendard,sans-serif;color:#4A4E5C"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#2F6BFF;color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px/1 Pretendard,sans-serif">3</span><span>쿠팡 검색창에 <b style="color:#1B1D26">붙여넣기</b>만 하면 끝!</span></div>
+    </div>
+    <button type="button" id="goMouthwash" style="display:block;width:100%;padding:17px;background:#2F6BFF;border:none;border-radius:16px;font:800 15.5px/1 Pretendard,sans-serif;color:#fff;cursor:pointer;box-shadow:0 8px 20px rgba(47,107,255,.3)">키워드 복사하고 바로가기 →</button>
+    <p style="margin:10px 0 0;font:600 11px/1.4 Pretendard,sans-serif;color:#A99884">쿠팡 파트너스를 통해 수수료를 받습니다</p>
+  </div>
+</div>
+
+<div class="sheet-wrap" id="creamSheet" data-close="cream">
+  <div class="sheet">
+    <div style="width:40px;height:5px;background:rgba(27,29,38,.16);border-radius:3px;margin:12px auto 20px"></div>
+    <div style="font-size:42px;line-height:1;margin-bottom:10px">🧴</div>
+    <h3 style="margin:0 0 8px;font:800 21px/1.3 Pretendard,sans-serif;color:#1B1D26;letter-spacing:-.03em">강남원장쌤 추천<br>뒤꿈치 풋크림</h3>
+    <p style="margin:0 0 18px;font:500 14px/1.6 Pretendard,sans-serif;color:rgba(27,29,38,.55)">아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요 👇</p>
+    <div style="padding:16px;background:#fff;border:2px dashed #C9DBFF;border-radius:16px;margin-bottom:16px">
+      <div style="font:800 11px/1 Pretendard,sans-serif;color:#2F6BFF;letter-spacing:.05em;margin-bottom:7px">🔍 검색 키워드</div>
+      <div style="font:800 20px/1.3 Pretendard,sans-serif;color:#1B1D26">509. 풋크림</div>
+    </div>
+    <div style="text-align:left;background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:10px;padding:5px 0;font:500 13.5px/1.5 Pretendard,sans-serif;color:#4A4E5C"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#2F6BFF;color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px/1 Pretendard,sans-serif">1</span><span>아래 버튼 누르면 쿠팡으로 이동돼요</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:5px 0;font:500 13.5px/1.5 Pretendard,sans-serif;color:#4A4E5C"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#2F6BFF;color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px/1 Pretendard,sans-serif">2</span><span>키워드는 <b style="color:#1B1D26">자동으로 복사</b>돼있어요</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:5px 0;font:500 13.5px/1.5 Pretendard,sans-serif;color:#4A4E5C"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#2F6BFF;color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px/1 Pretendard,sans-serif">3</span><span>쿠팡 검색창에 <b style="color:#1B1D26">붙여넣기</b>만 하면 끝!</span></div>
+    </div>
+    <button type="button" id="goCream" style="display:block;width:100%;padding:17px;background:#2F6BFF;border:none;border-radius:16px;font:800 15.5px/1 Pretendard,sans-serif;color:#fff;cursor:pointer;box-shadow:0 8px 20px rgba(47,107,255,.3)">키워드 복사하고 바로가기 →</button>
+    <p style="margin:10px 0 0;font:600 11px/1.4 Pretendard,sans-serif;color:#A99884">쿠팡 파트너스를 통해 수수료를 받습니다</p>
+  </div>
+</div>
+
+<script>
+var COUPANG_URL='https://influencers.coupang.com/s/dkanrjsk';
+var KEYWORDS={mouthwash:'509. 구강청결제',cream:'509. 풋크림'};
+var SHEETS={mouthwash:'mouthwashSheet',cream:'creamSheet'};
+
+/* 준비물 체크 */
+document.querySelectorAll('[data-item]').forEach(function(el){
+  el.addEventListener('click',function(e){
+    if(e.target.closest('[data-open]'))return;
+    el.classList.toggle('on');
+    document.getElementById('cnt').textContent=document.querySelectorAll('[data-item].on').length;
+  });
+});
+
+/* 시트 열기 / 닫기 */
+function openSheet(key){
+  document.getElementById(SHEETS[key]).classList.add('on');
+  document.body.classList.add('locked');
+}
+function closeSheet(key){
+  document.getElementById(SHEETS[key]).classList.remove('on');
+  document.body.classList.remove('locked');
+}
+document.querySelectorAll('[data-open]').forEach(function(el){
+  el.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openSheet(el.getAttribute('data-open'));});
+});
+document.querySelectorAll('[data-close]').forEach(function(el){
+  el.addEventListener('click',function(e){if(e.target===el)closeSheet(el.getAttribute('data-close'));});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){closeSheet('mouthwash');closeSheet('cream');}
+});
+
+/* 쿠팡 이동 */
+function wireGo(btnId,key){
+  document.getElementById(btnId).addEventListener('click',function(){
+    var btn=this,kw=KEYWORDS[key];
+    copyText(kw,'"'+kw+'" 복사 완료!');
+    btn.textContent='키워드 복사하고 이동 중...';
+    btn.style.opacity='.7';
+    btn.style.pointerEvents='none';
+    setTimeout(function(){location.href=COUPANG_URL+'#:~:text='+encodeURIComponent(kw);},800);
+  });
+}
+wireGo('goMouthwash','mouthwash');
+wireGo('goCream','cream');
+
+/* 복사 / 토스트 */
+function copyText(text,msg){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(function(){showToast(msg);}).catch(function(){fallbackCopy(text,msg);});
+  }else{fallbackCopy(text,msg);}
+}
+function fallbackCopy(text,msg){
+  var ta=document.createElement('textarea');
+  ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');showToast(msg);}catch(e){}
+  document.body.removeChild(ta);
+}
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('on');
+  setTimeout(function(){t.classList.remove('on');},2000);
+}
+
+/* 공유 */
+var SHARE={title:'🫧 초간단 풋케어 방법',text:'집에 있는 것들로 15분이면 끝나는 족욕 루틴!',url:location.href};
+document.getElementById('copyBtn').addEventListener('click',function(){
+  var b=this;
+  copyText(location.href,'🔗 링크가 복사됐어요!');
+  b.textContent='✓ 복사됐어요';
+  setTimeout(function(){b.textContent='🔗 링크복사';},1800);
+});
+document.getElementById('shareBtn').addEventListener('click',function(){
+  if(navigator.share){navigator.share(SHARE).catch(function(){});}
+  else{copyText(location.href,'🔗 링크가 복사됐어요!');}
+});
+document.getElementById('kakaoBtn').addEventListener('click',function(){
+  if(/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)){
+    copyText(location.href,'🔗 링크 복사됨! 카톡에 붙여넣기 해주세요');
+    var opened=false,onBlur=function(){opened=true;};
+    window.addEventListener('blur',onBlur);
+    location.href='kakaotalk://msg/text/'+encodeURIComponent(SHARE.title+' '+location.href);
+    setTimeout(function(){
+      window.removeEventListener('blur',onBlur);
+      if(!opened&&navigator.share)navigator.share(SHARE).catch(function(){});
+    },1200);
+  }else{
+    copyText(location.href,'🔗 링크 복사됨! 카톡에 붙여넣기 해주세요');
+  }
+});
+</script>
+</body>
+</html>
