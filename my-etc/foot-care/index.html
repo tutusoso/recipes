@@ -749,7 +749,28 @@
       document.body.removeChild(ta);
     }
     function shareNative() { if (navigator.share) { navigator.share(shareData).catch(function(){}); } else { copyLink(); } }
-    function shareKakao() { if (navigator.share && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { shareNative(); } else { copyLink(); showToast('🔗 링크 복사됨! 카톡에 붙여넣기 해주세요'); } }
+    function shareKakao() {
+      var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+      if (isMobile) {
+        // 링크 먼저 복사해두고 카톡 앱 열기 시도
+        copyLink();
+        var msg = shareData.title + ' ' + window.location.href;
+        var opened = false;
+        var onBlur = function() { opened = true; };
+        window.addEventListener('blur', onBlur);
+        window.location.href = 'kakaotalk://msg/text/' + encodeURIComponent(msg);
+        setTimeout(function() {
+          window.removeEventListener('blur', onBlur);
+          if (!opened && navigator.share) {
+            // 카톡 앱이 안 열리면 공유 시트로 (카톡 선택 가능)
+            navigator.share(shareData).catch(function(){});
+          }
+        }, 1200);
+      } else {
+        copyLink();
+        showToast('🔗 링크 복사됨! 카톡에 붙여넣기 해주세요');
+      }
+    }
   </script>
 
 </body>
