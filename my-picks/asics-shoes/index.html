@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>아식스 신발</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👟</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c;
+    --ink-soft: #666666;
+    --line: #e5e5e5;
+    --accent: #e85a7a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: #ffffff;
+    color: var(--ink);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px;
+  }
+
+  .modal {
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .modal-icon { font-size: 40px; margin-bottom: 10px; }
+  .modal-title {
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .modal-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+
+  .modal-keyword {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .modal-keyword-label {
+    font-size: 11px;
+    color: var(--ink-soft);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .modal-keyword-value {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  .how-box {
+    text-align: left;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+  .how-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .how-num {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .how-row strong { color: var(--ink); }
+
+  .modal-cta {
+    display: block;
+    width: 100%;
+    border: 1.5px solid var(--ink);
+    background: #fff;
+    color: var(--ink);
+    padding: 14px 0;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-subtext {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 2000;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+
+  <div class="modal">
+    <div class="modal-icon">👟</div>
+    <div class="modal-title">아식스 신발</div>
+    <p class="modal-desc">
+      아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요
+    </p>
+
+    <div class="modal-keyword">
+      <div class="modal-keyword-label">🔍 검색 키워드</div>
+      <div class="modal-keyword-value">570</div>
+    </div>
+
+    <div class="how-box">
+      <div class="how-row"><span class="how-num">1</span><span>아래 버튼 누르면 쿠팡으로 이동돼요</span></div>
+      <div class="how-row"><span class="how-num">2</span><span>키워드는 <strong>자동으로 복사</strong>돼있어요</span></div>
+      <div class="how-row"><span class="how-num">3</span><span>쿠팡 검색창에 <strong>붙여넣기</strong>만 하면 끝!</span></div>
+    </div>
+
+    <button type="button" class="modal-cta" id="goCoupangBtn">
+      키워드 복사하고 바로가기 →
+    </button>
+    <p class="modal-subtext">쿠팡 파트너스를 통해 수수료를 받습니다.</p>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    var COUPANG_URL = 'https://influencers.coupang.com/s/dkanrjsk';
+    var SEARCH_KEYWORD = '570';
+
+    document.getElementById('goCoupangBtn').addEventListener('click', function() {
+      var btn = this;
+      copyKeyword(SEARCH_KEYWORD);
+      btn.textContent = '키워드 복사하고 이동 중...';
+      btn.style.opacity = '0.7';
+      btn.style.pointerEvents = 'none';
+      var encoded = encodeURIComponent(SEARCH_KEYWORD);
+      setTimeout(function() {
+        window.location.href = COUPANG_URL + '#:~:text=' + encoded;
+      }, 800);
+    });
+
+    function copyKeyword(keyword) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(keyword).then(function() {
+          showToast('"' + keyword + '" 복사 완료!');
+        }).catch(function() { fallbackCopy(keyword); });
+      } else {
+        fallbackCopy(keyword);
+      }
+    }
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast('"' + text + '" 복사 완료!'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2000);
+    }
+  </script>
+
+</body>
+</html>
