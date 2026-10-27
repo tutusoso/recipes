@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>퇴근길 홈카페 라떼</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4ece0;
+    --card: #fffaf3;
+    --ink: #3a2b1d;
+    --ink-soft: #8a7563;
+    --ink-light: #b6a692;
+    --coffee: #6f4a2f;
+    --coffee-deep: #4e3220;
+    --cream-accent: #d99b5c;
+    --line: rgba(111, 74, 47, 0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  .wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 0 50px;
+  }
+
+  .disclosure {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-light);
+    padding: 14px 20px;
+  }
+
+  /* 인트로: 스토리형 도입부 */
+  .intro {
+    padding: 10px 26px 26px;
+    text-align: center;
+  }
+  .intro .cup { font-size: 46px; margin-bottom: 14px; }
+  .intro h1 {
+    font-family: 'Gowun Batang', serif;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .intro p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  .divider {
+    margin: 0 26px;
+    border-top: 1px dashed var(--line);
+  }
+
+  /* 준비물: 가로 한 줄 태그 형태 */
+  .ready {
+    padding: 28px 26px 0;
+  }
+  .ready-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--coffee);
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+  .ready-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 14px;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .tag.secret {
+    background: var(--coffee);
+    color: #fff;
+    border-color: var(--coffee);
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  /* 흐름: 타임라인형 */
+  .flow {
+    padding: 30px 26px 0;
+  }
+  .flow-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--coffee);
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+  .flow-line {
+    position: relative;
+    padding-left: 26px;
+  }
+  .flow-line::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 6px;
+    bottom: 6px;
+    width: 1.5px;
+    background: var(--line);
+  }
+  .flow-item {
+    position: relative;
+    padding-bottom: 22px;
+  }
+  .flow-item:last-child { padding-bottom: 0; }
+  .flow-item::before {
+    content: "";
+    position: absolute;
+    left: -26px;
+    top: 4px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--coffee);
+  }
+  .flow-item p {
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .flow-item .flow-sub {
+    font-size: 12.5px;
+    color: var(--ink-light);
+    margin-top: 3px;
+  }
+  .flow-item a.secret-link {
+    color: var(--coffee);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  /* 이 맛의 이유: 체크리스트 */
+  .why {
+    margin: 30px 26px 0;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px 22px;
+  }
+  .why-label {
+    font-family: 'Gowun Batang', serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .why-item {
+    display: flex;
+    gap: 9px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    padding: 5px 0;
+  }
+  .why-item .check { color: var(--cream-accent); font-weight: 800; flex-shrink: 0; }
+
+  /* 비밀재료 두 가지 카드 */
+  .secrets {
+    padding: 30px 26px 0;
+  }
+  .secrets-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--coffee);
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+  .secret-cards {
+    display: flex;
+    gap: 10px;
+  }
+  .secret-card {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 14px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .secret-card .sc-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--coffee);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .secret-card p {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .secret-card span {
+    font-size: 11px;
+    color: var(--ink-light);
+  }
+
+  .footer-note {
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--ink-light);
+    margin-top: 32px;
+    padding: 0 20px;
+    line-height: 1.7;
+  }
+
+  /* 모달 */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(58, 43, 29, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1000;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--card);
+    border-radius: 20px 20px 0 0;
+    padding: 0 22px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    animation: sheetUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  @keyframes sheetUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal-handle {
+    width: 36px;
+    height: 5px;
+    background: var(--line);
+    border-radius: 3px;
+    margin: 12px auto 20px;
+  }
+  .modal-icon { font-size: 38px; margin-bottom: 8px; }
+  .modal-title {
+    font-family: 'Gowun Batang', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .modal-desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+  .modal-keyword-box {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 16px;
+  }
+  .modal-keyword-label {
+    font-size: 10.5px;
+    color: var(--coffee);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .modal-keyword-value {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  .modal-cta {
+    display: block;
+    width: 100%;
+    background: var(--coffee);
+    color: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-cta:active { opacity: 0.85; }
+  .modal-subtext {
+    font-size: 10.5px;
+    color: var(--ink-light);
+    margin-top: 10px;
+  }
+  body.modal-open { overflow: hidden; }
+
+  .toast {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--coffee-deep);
+    color: #fff;
+    padding: 13px 22px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 2000;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="disclosure">쿠팡 파트너스 활동의 일환으로 일정 수수료를 제공받습니다</div>
+
+    <div class="intro">
+      <div class="cup">☕</div>
+      <h1>이거 하나면<br>카페 안 가도 되더라고요</h1>
+      <p>퇴근하고 집에 오면 커피 한 잔이 간절한데<br>매번 나가서 사 먹기는 귀찮잖아요.<br>그래서 요즘 집에서 이렇게 타 먹어요.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="ready">
+      <div class="ready-label">준비하는 것</div>
+      <div class="ready-tags">
+        <span class="tag">에스프레소 2샷</span>
+        <span class="tag secret" onclick="openModal('secretModal1')">비밀재료 1️⃣ · 1큰술</span>
+        <span class="tag secret" onclick="openModal('secretModal2')">비밀재료 2️⃣ · 1개</span>
+        <span class="tag">얼음 (취향껏)</span>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">만드는 순서</div>
+      <div class="flow-line">
+        <div class="flow-item">
+          <p>에스프레소 2샷을 준비해요</p>
+          <div class="flow-sub">블랙커피면 뜨거운 물 소량에 진하게 녹여도 돼요</div>
+        </div>
+        <div class="flow-item">
+          <p>컵에 <a class="secret-link" onclick="openModal('secretModal2')">비밀재료 2️⃣</a>를 60%쯤 채워요</p>
+        </div>
+        <div class="flow-item">
+          <p><a class="secret-link" onclick="openModal('secretModal1')">비밀재료 1️⃣</a> 한 큰술을 넣어요</p>
+        </div>
+        <div class="flow-item">
+          <p>에스프레소를 붓고 골고루 섞으면 끝이에요</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why">
+      <div class="why-label">이 맛의 이유</div>
+      <div class="why-item"><span class="check">✓</span><span>고소하고 진한 크림라떼 풍미가 확 올라와요</span></div>
+      <div class="why-item"><span class="check">✓</span><span>단백질까지 같이 챙겨서 더 든든해요</span></div>
+      <div class="why-item"><span class="check">✓</span><span>한 스푼 차이로 감칠맛이 완전히 달라져요</span></div>
+      <div class="why-item"><span class="check">✓</span><span>달달하고 부드러운 홈카페 라떼가 완성돼요</span></div>
+    </div>
+
+    <div class="secrets">
+      <div class="secrets-label">비밀재료, 뭔지 궁금하면</div>
+      <div class="secret-cards">
+        <div class="secret-card" onclick="openModal('secretModal1')">
+          <div class="sc-num">1</div>
+          <p>비밀재료 1️⃣</p>
+          <span>눌러서 확인</span>
+        </div>
+        <div class="secret-card" onclick="openModal('secretModal2')">
+          <div class="sc-num">2</div>
+          <p>비밀재료 2️⃣</p>
+          <span>눌러서 확인</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="footer-note">
+      인스타 DM으로 바로 안내가 어려워<br>
+      중간 페이지를 만들었어요
+    </p>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal-overlay" id="secretModal1" onclick="if(event.target.id==='secretModal1') closeModal('secretModal1')">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-icon">☕</div>
+      <div class="modal-title">비밀재료 1️⃣</div>
+      <p class="modal-desc">아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요</p>
+
+      <div class="modal-keyword-box">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value">571. 비밀재료1</div>
+      </div>
+
+      <button type="button" class="modal-cta" id="goCoupangBtn1">
+        키워드 복사하고 바로가기 →
+      </button>
+      <p class="modal-subtext">쿠팡 파트너스를 통해 수수료를 받습니다.</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="secretModal2" onclick="if(event.target.id==='secretModal2') closeModal('secretModal2')">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-icon">☕</div>
+      <div class="modal-title">비밀재료 2️⃣</div>
+      <p class="modal-desc">아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요</p>
+
+      <div class="modal-keyword-box">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value">571. 비밀재료2</div>
+      </div>
+
+      <button type="button" class="modal-cta" id="goCoupangBtn2">
+        키워드 복사하고 바로가기 →
+      </button>
+      <p class="modal-subtext">쿠팡 파트너스를 통해 수수료를 받습니다.</p>
+    </div>
+  </div>
+
+  <script>
+    var COUPANG_URL = 'https://influencers.coupang.com/s/dkanrjsk';
+    var KEYWORDS = {
+      secretModal1: '571. 비밀재료1',
+      secretModal2: '571. 비밀재료2'
+    };
+
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    function closeAllModals() {
+      closeModal('secretModal1');
+      closeModal('secretModal2');
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAllModals(); });
+
+    function wireCoupangButton(btnId, modalId) {
+      document.getElementById(btnId).addEventListener('click', function() {
+        var btn = this;
+        var keyword = KEYWORDS[modalId];
+        copyKeyword(keyword);
+        btn.textContent = '키워드 복사하고 이동 중...';
+        btn.style.opacity = '0.7';
+        btn.style.pointerEvents = 'none';
+        var encoded = encodeURIComponent(keyword);
+        setTimeout(function() {
+          window.location.href = COUPANG_URL + '#:~:text=' + encoded;
+        }, 800);
+      });
+    }
+    wireCoupangButton('goCoupangBtn1', 'secretModal1');
+    wireCoupangButton('goCoupangBtn2', 'secretModal2');
+
+    function copyKeyword(keyword) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(keyword).then(function() {
+          showToast('"' + keyword + '" 복사 완료!');
+        }).catch(function() { fallbackCopy(keyword); });
+      } else {
+        fallbackCopy(keyword);
+      }
+    }
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast('"' + text + '" 복사 완료!'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2000);
+    }
+  </script>
+
+</body>
+</html>
