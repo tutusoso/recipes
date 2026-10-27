@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>퇴근길 홈카페 라떼 핵심재료</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4ece0;
+    --card: #fffaf3;
+    --ink: #3a2b1d;
+    --ink-soft: #8a7563;
+    --ink-light: #b6a692;
+    --coffee: #6f4a2f;
+    --coffee-deep: #4e3220;
+    --line: rgba(111, 74, 47, 0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+  }
+
+  .page {
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+  }
+  .page .cup { font-size: 44px; margin-bottom: 12px; }
+  .page h1 {
+    font-family: 'Gowun Batang', serif;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .page p {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+
+  .secret-cards {
+    display: flex;
+    gap: 10px;
+  }
+  .secret-card {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px 14px;
+    cursor: pointer;
+  }
+  .secret-card .sc-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--coffee);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .secret-card p {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .secret-card span {
+    font-size: 11px;
+    color: var(--ink-light);
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(58, 43, 29, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1000;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--card);
+    border-radius: 20px 20px 0 0;
+    padding: 0 22px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    animation: sheetUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  @keyframes sheetUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal-handle {
+    width: 36px;
+    height: 5px;
+    background: var(--line);
+    border-radius: 3px;
+    margin: 12px auto 20px;
+  }
+  .modal-icon { font-size: 38px; margin-bottom: 8px; }
+  .modal-title {
+    font-family: 'Gowun Batang', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .modal-desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+  .modal-keyword-box {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 16px;
+  }
+  .modal-keyword-label {
+    font-size: 10.5px;
+    color: var(--coffee);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .modal-keyword-value {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  .modal-cta {
+    display: block;
+    width: 100%;
+    background: var(--coffee);
+    color: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-cta:active { opacity: 0.85; }
+  .modal-subtext {
+    font-size: 10.5px;
+    color: var(--ink-light);
+    margin-top: 10px;
+  }
+  body.modal-open { overflow: hidden; }
+
+  .toast {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--coffee-deep);
+    color: #fff;
+    padding: 13px 22px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 2000;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="cup">☕</div>
+    <h1>퇴근길 홈카페 라떼</h1>
+    <p>비밀재료 1️⃣, 2️⃣ 중 확인하고 싶은 걸 눌러주세요</p>
+
+    <div class="secret-cards">
+      <div class="secret-card" onclick="openModal('secretModal1')">
+        <div class="sc-num">1</div>
+        <p>비밀재료 1️⃣</p>
+        <span>눌러서 확인</span>
+      </div>
+      <div class="secret-card" onclick="openModal('secretModal2')">
+        <div class="sc-num">2</div>
+        <p>비밀재료 2️⃣</p>
+        <span>눌러서 확인</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal-overlay" id="secretModal1" onclick="if(event.target.id==='secretModal1') closeModal('secretModal1')">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-icon">☕</div>
+      <div class="modal-title">비밀재료 1️⃣</div>
+      <p class="modal-desc">아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요</p>
+
+      <div class="modal-keyword-box">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value">572. 비밀재료1</div>
+      </div>
+
+      <button type="button" class="modal-cta" id="goCoupangBtn1">
+        키워드 복사하고 바로가기 →
+      </button>
+      <p class="modal-subtext">쿠팡 파트너스를 통해 수수료를 받습니다.</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="secretModal2" onclick="if(event.target.id==='secretModal2') closeModal('secretModal2')">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-icon">☕</div>
+      <div class="modal-title">비밀재료 2️⃣</div>
+      <p class="modal-desc">아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요</p>
+
+      <div class="modal-keyword-box">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value">572. 비밀재료2</div>
+      </div>
+
+      <button type="button" class="modal-cta" id="goCoupangBtn2">
+        키워드 복사하고 바로가기 →
+      </button>
+      <p class="modal-subtext">쿠팡 파트너스를 통해 수수료를 받습니다.</p>
+    </div>
+  </div>
+
+  <script>
+    var COUPANG_URL = 'https://influencers.coupang.com/s/dkanrjsk';
+    var KEYWORDS = {
+      secretModal1: '572. 비밀재료1',
+      secretModal2: '572. 비밀재료2'
+    };
+
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    function closeAllModals() {
+      closeModal('secretModal1');
+      closeModal('secretModal2');
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAllModals(); });
+
+    function wireCoupangButton(btnId, modalId) {
+      document.getElementById(btnId).addEventListener('click', function() {
+        var btn = this;
+        var keyword = KEYWORDS[modalId];
+        copyKeyword(keyword);
+        btn.textContent = '키워드 복사하고 이동 중...';
+        btn.style.opacity = '0.7';
+        btn.style.pointerEvents = 'none';
+        var encoded = encodeURIComponent(keyword);
+        setTimeout(function() {
+          window.location.href = COUPANG_URL + '#:~:text=' + encoded;
+        }, 800);
+      });
+    }
+    wireCoupangButton('goCoupangBtn1', 'secretModal1');
+    wireCoupangButton('goCoupangBtn2', 'secretModal2');
+
+    function copyKeyword(keyword) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(keyword).then(function() {
+          showToast('"' + keyword + '" 복사 완료!');
+        }).catch(function() { fallbackCopy(keyword); });
+      } else {
+        fallbackCopy(keyword);
+      }
+    }
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast('"' + text + '" 복사 완료!'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2000);
+    }
+  </script>
+
+</body>
+</html>
