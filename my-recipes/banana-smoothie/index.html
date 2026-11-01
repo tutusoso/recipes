@@ -364,9 +364,9 @@
         바나나
         <span class="item-amount">1개</span>
       </div>
-      <div class="list-item list-item-secret" onclick="openModal()">
+      <div class="list-item list-item-secret" onclick="openModal('secretModal1')">
         <span class="item-icon">⭐</span>
-        <span class="item-label">비법재료</span>
+        <span class="item-label">핵심재료</span>
         <span class="item-amount" style="margin-left:0; margin-right:10px;">한 줌</span>
         <span class="chevron">›</span>
       </div>
@@ -375,7 +375,7 @@
         우유
         <span class="item-amount">200ml</span>
       </div>
-      <div class="list-item list-item-secret" onclick="openModal()">
+      <div class="list-item list-item-secret" onclick="openModal('secretModal2')">
         <span class="item-icon">⭐</span>
         <span class="item-label">비법가루</span>
         <span class="item-amount" style="margin-left:0; margin-right:10px;">적당량</span>
@@ -387,11 +387,11 @@
     <div class="grouped-list">
       <div class="step-item">
         <span class="step-num">1</span>
-        <div class="step-text">바나나와 <strong><a class="secret-link" onclick="openModal()">⭐비법재료⭐</a> 한 줌</strong>을 믹서기에 넣어주세요</div>
+        <div class="step-text">바나나와 <strong><a class="secret-link" onclick="openModal('secretModal1')">⭐핵심재료⭐</a> 한 줌</strong>을 믹서기에 넣어주세요</div>
       </div>
       <div class="step-item">
         <span class="step-num">2</span>
-        <div class="step-text">우유 200ml와 <strong><a class="secret-link" onclick="openModal()">⭐비법가루⭐</a></strong>를 함께 넣어주세요</div>
+        <div class="step-text">우유 200ml와 <strong><a class="secret-link" onclick="openModal('secretModal2')">⭐비법가루⭐</a></strong>를 함께 넣어주세요</div>
       </div>
       <div class="step-item">
         <span class="step-num">3</span>
@@ -402,15 +402,15 @@
     <div class="tip-box">
       <div class="tip-label">📌 포인트</div>
       <ul class="tip-list">
-        <li>⭐비법재료⭐와 ⭐비법가루⭐가 고소한 맛의 핵심이에요</li>
+        <li>⭐핵심재료⭐와 ⭐비법가루⭐가 고소한 맛의 핵심이에요</li>
         <li>30~40초 이상 갈아야 입자 없이 부드러워요</li>
         <li>아침 대용이나 간식으로 먹기 좋아요</li>
       </ul>
     </div>
 
     <div class="cta-section">
-      <h2>고소한 맛의 비밀,<br><span>⭐비법재료⭐·비법가루⭐</span>였어요 🍌</h2>
-      <button type="button" class="cta-btn" onclick="openModal()">비법재료 확인하기</button>
+      <h2>고소한 맛의 비밀,<br><span>⭐핵심재료⭐·비법가루⭐</span>였어요 🍌</h2>
+      <button type="button" class="cta-btn" onclick="openModal('secretModal1')">핵심재료 확인하기</button>
     </div>
 
     <div class="share-section">
@@ -432,24 +432,48 @@
 
   <div class="toast" id="toast"></div>
 
-  <div class="modal-overlay" id="secretModal" onclick="if(event.target.id==='secretModal') closeModal()">
+  <div class="modal-overlay" id="secretModal1" onclick="if(event.target.id==='secretModal1') closeModal('secretModal1')">
     <div class="modal">
       <div class="modal-handle"></div>
       <div class="modal-icon">🍌</div>
-      <div class="modal-title">바나나스무디 비법재료</div>
+      <div class="modal-title">핵심재료</div>
       <p class="modal-desc">
-        비법재료와 비법가루, <strong style="color:#d9972e;">두 가지</strong>예요! 🤎<br>
-        쿠팡 <strong style="color:#d9972e;">검색창에 577</strong> 검색하시면<br>둘 다 바로 나와요 👇
+        쿠팡 <strong style="color:#d9972e;">검색창에 577. 핵심재료</strong> 검색하시면<br>바로 나와요 👇<br>
+        <strong style="color:#d9972e;">577만</strong> 검색해도 비법가루까지 같이 볼 수 있어요!
       </p>
 
       <div class="modal-keyword-box">
         <div class="modal-keyword-label">🔍 검색 키워드</div>
-        <div class="modal-keyword-value">577</div>
+        <div class="modal-keyword-value" style="font-size:20px;">577. 핵심재료</div>
       </div>
 
 
       <div style="text-align:left;background:rgba(120,120,128,0.08);border-radius:12px;padding:12px 14px;margin-bottom:16px;"><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">1</span><span>아래 버튼 누르면 쿠팡으로 이동돼요</span></div><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">2</span><span>키워드는 <strong>자동으로 복사</strong>돼있어요</span></div><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">3</span><span>쿠팡 검색창에 <strong>붙여넣기</strong>만 하면 끝!</span></div></div>
-      <button type="button" class="modal-cta" id="goCoupangBtn">
+      <button type="button" class="modal-cta" id="goCoupangBtn1">
+        키워드 복사하고 바로가기 →
+      </button>
+      <p class="modal-subtext">쿠팡 파트너스를 통해 수수료를 받습니다.</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="secretModal2" onclick="if(event.target.id==='secretModal2') closeModal('secretModal2')">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-icon">🍌</div>
+      <div class="modal-title">비법가루</div>
+      <p class="modal-desc">
+        쿠팡 <strong style="color:#d9972e;">검색창에 577. 비법가루</strong> 검색하시면<br>바로 나와요 👇<br>
+        <strong style="color:#d9972e;">577만</strong> 검색해도 핵심재료까지 같이 볼 수 있어요!
+      </p>
+
+      <div class="modal-keyword-box">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value" style="font-size:20px;">577. 비법가루</div>
+      </div>
+
+
+      <div style="text-align:left;background:rgba(120,120,128,0.08);border-radius:12px;padding:12px 14px;margin-bottom:16px;"><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">1</span><span>아래 버튼 누르면 쿠팡으로 이동돼요</span></div><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">2</span><span>키워드는 <strong>자동으로 복사</strong>돼있어요</span></div><div style="display:flex;align-items:center;gap:10px;padding:5px 0;font-size:13.5px;color:#555;line-height:1.5;"><span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#0095f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">3</span><span>쿠팡 검색창에 <strong>붙여넣기</strong>만 하면 끝!</span></div></div>
+      <button type="button" class="modal-cta" id="goCoupangBtn2">
         키워드 복사하고 바로가기 →
       </button>
       <p class="modal-subtext">쿠팡 파트너스를 통해 수수료를 받습니다.</p>
@@ -458,29 +482,41 @@
 
   <script>
     var COUPANG_URL = 'https://influencers.coupang.com/s/dkanrjsk';
-    var SEARCH_KEYWORD = '577';
+    var KEYWORDS = {
+      secretModal1: '577. 핵심재료',
+      secretModal2: '577. 비법가루'
+    };
 
-    function openModal() {
-      document.getElementById('secretModal').classList.add('active');
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
       document.body.classList.add('modal-open');
     }
-    function closeModal() {
-      document.getElementById('secretModal').classList.remove('active');
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
       document.body.classList.remove('modal-open');
     }
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+    function closeAllModals() {
+      closeModal('secretModal1');
+      closeModal('secretModal2');
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAllModals(); });
 
-    document.getElementById('goCoupangBtn').addEventListener('click', function() {
-      var btn = this;
-      copyKeyword(SEARCH_KEYWORD);
-      btn.textContent = '키워드 복사하고 이동 중...';
-      btn.style.opacity = '0.7';
-      btn.style.pointerEvents = 'none';
-      var encoded = encodeURIComponent(SEARCH_KEYWORD);
-      setTimeout(function() {
-        window.location.href = COUPANG_URL + '#:~:text=' + encoded;
-      }, 800);
-    });
+    function wireCoupangButton(btnId, modalId) {
+      document.getElementById(btnId).addEventListener('click', function() {
+        var btn = this;
+        var keyword = KEYWORDS[modalId];
+        copyKeyword(keyword);
+        btn.textContent = '키워드 복사하고 이동 중...';
+        btn.style.opacity = '0.7';
+        btn.style.pointerEvents = 'none';
+        var encoded = encodeURIComponent(keyword);
+        setTimeout(function() {
+          window.location.href = COUPANG_URL + '#:~:text=' + encoded;
+        }, 800);
+      });
+    }
+    wireCoupangButton('goCoupangBtn1', 'secretModal1');
+    wireCoupangButton('goCoupangBtn2', 'secretModal2');
 
     function copyKeyword(keyword) {
       if (navigator.clipboard) {
