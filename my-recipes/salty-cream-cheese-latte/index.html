@@ -12,138 +12,156 @@
   :root {
     --ink: #1c1c1c;
     --ink-soft: #666666;
-    --line: #e5e5e5;
+    --line: #ececec;
     --accent: #a9693d;
+    --accent-soft: #faf3ec;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
   body {
     font-family: 'Noto Sans KR', -apple-system, sans-serif;
     background: #ffffff;
     color: var(--ink);
-    line-height: 1.65;
+    line-height: 1.5;
     letter-spacing: -0.01em;
   }
   .wrap {
     max-width: 480px;
     margin: 0 auto;
-    padding: 0 20px 56px;
+    padding: 0 16px 44px;
   }
 
   .disclosure {
     text-align: center;
-    font-size: 11.5px;
+    font-size: 11px;
     color: var(--ink-soft);
-    padding: 16px 0;
+    padding: 12px 0;
     border-bottom: 1px solid var(--line);
   }
 
   .hero {
-    padding: 28px 0 20px;
+    padding: 22px 0 16px;
     text-align: center;
     border-bottom: 1px solid var(--line);
   }
-  .hero-emoji { font-size: 40px; margin-bottom: 12px; }
+  .hero-emoji { font-size: 34px; margin-bottom: 8px; }
   .hero h1 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 800;
-    line-height: 1.4;
-    margin-bottom: 8px;
+    line-height: 1.35;
+    margin-bottom: 6px;
   }
   .hero p {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--ink-soft);
   }
 
   .section-title {
-    padding: 28px 0 10px;
-    font-size: 15px;
+    padding: 18px 2px 7px;
+    font-size: 13.5px;
     font-weight: 800;
   }
 
   .list-box {
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
   }
   .list-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 13px 16px;
-    font-size: 15px;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
   }
   .list-row + .list-row { border-top: 1px solid var(--line); }
+  .list-row .ic { font-size: 15px; flex-shrink: 0; width: 18px; text-align: center; }
   .list-row .amount {
     margin-left: auto;
     color: var(--ink-soft);
-    font-size: 13.5px;
-    font-weight: 600;
+    font-size: 12.5px;
+    font-weight: 700;
+    background: #f5f5f5;
+    padding: 2px 8px;
+    border-radius: 999px;
   }
   .list-row.secret {
     cursor: pointer;
+    background: var(--accent-soft);
   }
   .list-row.secret .label {
     color: var(--accent);
-    font-weight: 700;
+    font-weight: 800;
+  }
+  .list-row.secret .amount {
+    background: #fff;
+    color: var(--accent);
   }
   .list-row.secret .arrow {
     color: var(--accent);
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 15px;
   }
 
   .steps {
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
   }
   .step {
     display: flex;
-    gap: 12px;
-    padding: 14px 16px;
-    font-size: 15px;
+    gap: 9px;
+    align-items: center;
+    padding: 9px 12px;
+    font-size: 14px;
   }
   .step + .step { border-top: 1px solid var(--line); }
   .step-num {
     flex-shrink: 0;
-    width: 22px;
-    height: 22px;
+    width: 19px;
+    height: 19px;
     border-radius: 50%;
-    border: 1.5px solid var(--ink);
-    color: var(--ink);
+    background: var(--ink);
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 11px;
   }
-  .step-text { padding-top: 1px; }
-  .step-text strong { color: var(--ink); }
+  .step-text strong { color: var(--ink); font-weight: 700; }
+  .step-sub {
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
   .step-text a.secret-link {
     color: var(--accent);
-    font-weight: 700;
+    font-weight: 800;
     text-decoration: underline;
-    text-underline-offset: 3px;
+    text-underline-offset: 2px;
     cursor: pointer;
   }
 
   .tip-box {
-    margin-top: 16px;
-    border-left: 3px solid var(--accent);
-    padding: 4px 0 4px 14px;
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    line-height: 1.8;
+    margin-top: 12px;
+    background: var(--accent-soft);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 12.5px;
+    color: #7a5331;
+    line-height: 1.6;
   }
-  .tip-box strong { color: var(--ink); }
+  .tip-box strong { color: var(--accent); }
 
   .footer-note {
     text-align: center;
-    font-size: 11.5px;
+    font-size: 11px;
     color: var(--ink-soft);
-    margin-top: 32px;
-    padding-top: 20px;
+    margin-top: 24px;
+    padding-top: 16px;
     border-top: 1px solid var(--line);
-    line-height: 1.7;
+    line-height: 1.6;
   }
 
   /* 모달 */
@@ -263,17 +281,21 @@
     <div class="section-title">🧊 라떼 베이스</div>
     <div class="list-box">
       <div class="list-row">
+        <span class="ic">🧊</span>
         <span>얼음</span>
       </div>
       <div class="list-row secret" onclick="openModal('secretModal1')">
+        <span class="ic">⭐</span>
         <span class="label">비법밀크</span>
         <span class="amount">적당량</span>
         <span class="arrow">›</span>
       </div>
       <div class="list-row">
+        <span class="ic">☕</span>
         <span>샷</span>
       </div>
       <div class="list-row secret" onclick="openModal('secretModal2')">
+        <span class="ic">⭐</span>
         <span class="label">비법시럽</span>
         <span class="amount">적당량</span>
         <span class="arrow">›</span>
@@ -283,19 +305,23 @@
     <div class="section-title">🧀 크림</div>
     <div class="list-box">
       <div class="list-row">
+        <span class="ic">🥛</span>
         <span>생크림</span>
         <span class="amount">2큰술</span>
       </div>
       <div class="list-row">
+        <span class="ic">🧀</span>
         <span>크림치즈</span>
         <span class="amount">1티스푼</span>
       </div>
       <div class="list-row secret" onclick="openModal('secretModal2')">
+        <span class="ic">⭐</span>
         <span class="label">비법시럽</span>
         <span class="amount">1펌핑</span>
         <span class="arrow">›</span>
       </div>
       <div class="list-row">
+        <span class="ic">🧂</span>
         <span>말돈소금</span>
         <span class="amount">1꼬집</span>
       </div>
@@ -305,23 +331,26 @@
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <div class="step-text">컵에 <strong>얼음</strong>과 <a class="secret-link" onclick="openModal('secretModal1')">비법밀크</a>를 넣어주세요</div>
+        <div class="step-text"><strong>얼음 + <a class="secret-link" onclick="openModal('secretModal1')">비법밀크</a></strong></div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <div class="step-text">샷잔에 <strong>샷</strong>과 <a class="secret-link" onclick="openModal('secretModal2')">비법시럽</a>을 넣고 전동 거품기로 부드럽게 거품 내주세요</div>
+        <div class="step-text"><strong>샷 + <a class="secret-link" onclick="openModal('secretModal2')">비법시럽</a> 거품내기</strong></div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <div class="step-text">거품 낸 샷을 <a class="secret-link" onclick="openModal('secretModal1')">비법밀크</a>에 넣고 섞어주세요</div>
+        <div class="step-text"><strong>거품 샷을 비법밀크에 섞기</strong></div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
-        <div class="step-text"><strong>생크림 2큰술 + 크림치즈 1티스푼 + <a class="secret-link" onclick="openModal('secretModal2')">비법시럽</a> 1펌핑 + 말돈소금 1꼬집</strong>을 미니 거품기로 부드럽게 올려주세요</div>
+        <div class="step-text">
+          <strong>크림 만들어 올리기</strong>
+          <div class="step-sub">생크림·크림치즈·<a class="secret-link" onclick="openModal('secretModal2')">비법시럽</a>·말돈소금</div>
+        </div>
       </div>
       <div class="step">
         <div class="step-num">5</div>
-        <div class="step-text">크림을 라떼 위에 올리면 완성이에요</div>
+        <div class="step-text"><strong>라떼 위에 올리면 완성 🤍</strong></div>
       </div>
     </div>
 
